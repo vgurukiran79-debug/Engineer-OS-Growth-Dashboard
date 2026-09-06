@@ -1,0 +1,1094 @@
+IMPORTANT: This is a refinement and functionality upgrade of the existing ENGINEER OS website.
+
+I have reviewed the current generated website carefully.
+
+The current UI looks visually good, but it has a major problem:
+
+IT IS FILLED WITH HARDCODED / RAW / DEMO DATA.
+
+I do NOT want the application to display fake statistics as if they were my real data.
+
+Transform this into a real, functional, user-driven application.
+
+==================================================
+1. CORE REQUIREMENT — REMOVE HARDCODED DATA
+==================================================
+
+Remove all fake/hardcoded personal statistics currently displayed in the dashboard.
+
+Examples of values that must NOT be permanently hardcoded:
+
+88.1% attendance
+8.42 CGPA
+29 DSA problems
+8/21 AI/ML topics
+3 projects
+73/100 Growth Score
+fake attendance percentages
+fake completed goals
+fake study hours
+fake project progress
+fake academic marks
+
+These should only appear after the user actually enters data.
+
+The application should start with a clean state.
+
+For a new user with no data, show:
+
+"Welcome to Engineer OS 👋"
+
+"Start adding your academic and engineering data to see your growth."
+
+Then show useful empty-state cards with buttons such as:
+
++ Add Attendance
++ Add Goal
++ Add Study Session
++ Add DSA Problem
++ Add Skill
++ Add Project
++ Add Academic Record
+
+==================================================
+2. REAL DATA ENTRY SYSTEM
+==================================================
+
+EVERY major section must have proper data entry functionality.
+
+The user should never need to edit code, JSON, database records, or source files manually.
+
+Use forms, dialogs, sheets, buttons, dropdowns, date pickers, toggles and editable cards.
+
+Every item should support:
+
+ADD
+EDIT
+DELETE
+SAVE
+CANCEL
+
+Ask for confirmation before deleting important data.
+
+After saving:
+
+- update the UI immediately
+- update LocalStorage
+- update analytics
+- update dashboard statistics
+- update Growth Score where applicable
+- update Guru AI context
+
+==================================================
+3. ATTENDANCE — MAKE IT FULLY FUNCTIONAL
+==================================================
+
+This is one of the most important features.
+
+Use the user's Semester 3 timetable as the source for scheduled classes.
+
+Do NOT fill attendance with fake values.
+
+Each scheduled class must allow:
+
+PRESENT
+ABSENT
+CANCELLED
+HOLIDAY
+
+The user can mark attendance directly from:
+
+Dashboard
+Timetable
+Attendance page
+
+Example:
+
+DSA
+8:40–9:40
+
+[Present] [Absent]
+
+Once the user selects Present or Absent:
+
+automatically update:
+
+Present count
+Total conducted classes
+Attendance percentage
+Status
+Attendance trend
+Classes needed to reach target
+Maximum possible future absences
+
+Formula:
+
+attendance =
+(present classes / conducted classes) × 100
+
+Cancelled and holiday classes must NOT count as conducted classes.
+
+==================================================
+4. VTU ATTENDANCE
+==================================================
+
+The default VTU 2025 attendance requirement must be:
+
+85%
+
+Calculate attendance separately for every course.
+
+Display:
+
+GREEN — Safe
+Attendance >= 85%
+
+YELLOW — Warning
+Attendance below 85% but still close to the target
+
+RED — Critical
+Significantly below the target
+
+Show:
+
+"VTU Minimum: 85%"
+
+Do not claim that condonation is automatic.
+
+Allow the attendance threshold to be changed from Settings.
+
+Show exactly how many future classes need to be attended to recover.
+
+==================================================
+5. ATTENDANCE PREDICTOR
+==================================================
+
+Make this fully functional.
+
+User selects a subject.
+
+Show:
+
+Current attendance
+Current present
+Current conducted
+Future classes
+Projected attendance
+
+Allow the user to simulate:
+
+"If I attend the next 5 classes..."
+
+"If I miss the next 2 classes..."
+
+Do NOT modify actual attendance during simulation.
+
+==================================================
+6. ABSENCE SIMULATOR
+==================================================
+
+Make "Absence Simulator" fully functional.
+
+The user chooses:
+
+Subject
+Number of classes to miss
+
+Then calculate:
+
+Current %
+Projected %
+Difference
+Status
+Classes needed to recover
+
+Simulation must never modify real attendance.
+
+==================================================
+7. TIMETABLE
+==================================================
+
+Use my actual Semester 3 timetable.
+
+Monday to Saturday.
+
+The timetable must be interactive.
+
+Clicking a class should open:
+
+Subject
+Code
+Time
+Teacher if available
+Batch
+Attendance status
+Mark Present
+Mark Absent
+
+Attendance marked from timetable must automatically update the Attendance page and Dashboard.
+
+Support B1/B2 batch classes correctly.
+
+Do not count another batch's class as the user's class.
+
+==================================================
+8. DASHBOARD MUST BE DYNAMIC
+==================================================
+
+The dashboard must NOT contain fake statistics.
+
+Everything must come from actual stored user data.
+
+Top section:
+
+"Good morning/afternoon/evening, Guru 👋"
+
+Dynamic based on current time.
+
+Then:
+
+"Your engineering command center"
+
+Show:
+
+Today's Classes
+Today's Goals
+Attendance Alerts
+Upcoming Deadlines
+Study Plan
+
+Statistics should only appear when data exists.
+
+For example:
+
+Attendance:
+"--"
+
+if no attendance has been entered.
+
+CGPA:
+"--"
+
+if no academic data exists.
+
+DSA:
+"0 solved"
+
+if no DSA problems have been entered.
+
+Projects:
+"0 active"
+
+if no projects exist.
+
+AI/ML:
+"0 topics completed"
+
+if no topics are completed.
+
+==================================================
+9. GROWTH SCORE
+==================================================
+
+Do NOT show a random Growth Score.
+
+Calculate it dynamically from actual data.
+
+Use:
+
+Academics
+Attendance
+DSA
+Programming
+AI/ML
+Projects
+Git/GitHub
+Communication
+Consistency
+
+Display:
+
+Personal Growth Index
+
+0–100
+
+If insufficient data exists:
+
+"Add more data to calculate your Growth Index."
+
+Make the calculation transparent.
+
+Allow the weightings to be configured.
+
+==================================================
+10. ACADEMICS
+==================================================
+
+Create a functional academic data system.
+
+Allow adding:
+
+Subject
+CIE marks
+SEE marks
+Assignment marks
+Quiz marks
+Lab marks
+Internal marks
+Other assessment
+
+Calculate:
+
+Subject performance
+Average
+Semester performance
+SGPA
+
+Allow semester records:
+
+Semester 1
+Semester 2
+Semester 3
+Semester 4
+Semester 5
+Semester 6
+Semester 7
+Semester 8
+
+Calculate CGPA from entered semester data.
+
+Do NOT use fake CGPA values.
+
+==================================================
+11. DSA TRACKER
+==================================================
+
+Do not show fake "29 solved".
+
+Start at:
+
+0 solved
+
+unless the user adds problems.
+
+Allow:
+
+Add Problem
+
+Fields:
+
+Problem name
+Platform
+Topic
+Difficulty
+Status
+Date
+Solution URL
+Notes
+
+Topics:
+
+Arrays
+Strings
+Linked Lists
+Stacks
+Queues
+Hashing
+Recursion
+Trees
+Binary Search
+Graphs
+Sorting
+Searching
+Dynamic Programming
+Greedy
+Backtracking
+
+Calculate:
+
+Total solved
+Easy
+Medium
+Hard
+Streak
+Weekly progress
+
+==================================================
+12. AI/ML ROADMAP
+==================================================
+
+Do not show fake "8/21".
+
+Start at:
+
+0 completed
+
+Allow the user to mark topics:
+
+Not Started
+Learning
+Practicing
+Completed
+
+Track:
+
+Python
+Statistics
+Probability
+Linear Algebra
+NumPy
+Pandas
+Visualization
+Machine Learning
+Deep Learning
+Neural Networks
+NLP
+Computer Vision
+Generative AI
+LLMs
+RAG
+AI Agents
+MLOps
+
+Dashboard should automatically calculate progress.
+
+==================================================
+13. PROJECTS
+==================================================
+
+Do not show fake projects.
+
+Start with an empty state.
+
+Allow:
+
++ Add Project
+
+Fields:
+
+Project name
+Description
+Technology
+Status
+Progress
+Start date
+Deadline
+GitHub URL
+Live Demo URL
+Skills
+Notes
+
+Statuses:
+
+Idea
+Planning
+Building
+Testing
+Completed
+Deployed
+
+==================================================
+14. GOALS & HABITS
+==================================================
+
+Make goals fully functional.
+
+Allow:
+
+Daily
+Weekly
+Monthly
+Semester
+
+Each goal:
+
+Title
+Category
+Deadline
+Priority
+Progress
+Completed/not completed
+
+Show real completion percentage.
+
+No fake goals.
+
+==================================================
+15. STUDY TRACKER
+==================================================
+
+Allow user to log:
+
+Date
+Subject
+Topic
+Study duration
+Notes
+
+Provide:
+
+Daily study hours
+Weekly study hours
+Monthly study hours
+Subject-wise study time
+
+Connect this data to the Growth Index.
+
+==================================================
+16. CAREER / INTERNSHIP
+==================================================
+
+Make this data-driven.
+
+Allow:
+
+Resume status
+Portfolio status
+GitHub status
+LinkedIn status
+DSA progress
+Projects
+Applications
+Interviews
+Certificates
+
+Internship tracker:
+
+Company
+Role
+Date
+Status
+Link
+Notes
+
+Do not show fake applications.
+
+==================================================
+17. GITHUB
+==================================================
+
+Allow the user to enter:
+
+GitHub username
+
+If public GitHub data can be fetched safely, show it.
+
+Otherwise provide manual metrics.
+
+Never expose GitHub secrets.
+
+==================================================
+18. GURU AI — CRITICAL
+==================================================
+
+The current "Guru AI" button is not functioning correctly.
+
+MAKE IT ACTUALLY WORK.
+
+I will provide my Gemini API key externally.
+
+Use Gemini as the AI provider.
+
+Use a secure server-side/API route.
+
+NEVER expose the Gemini API key in frontend source code.
+
+Use an environment variable:
+
+GEMINI_API_KEY
+
+Do NOT hardcode the API key.
+
+==================================================
+19. GURU AI CHATBOT
+==================================================
+
+Create a real AI chatbot.
+
+Name:
+
+Guru AI
+
+Guru AI should understand the user's actual Engineer OS data.
+
+It should be able to answer questions like:
+
+"How is my attendance?"
+
+"Which subject needs attention?"
+
+"What should I study today?"
+
+"What happens if I miss tomorrow's DSA class?"
+
+"How many DSA problems did I solve this week?"
+
+"How can I improve my Growth Index?"
+
+"Create today's study plan."
+
+"Analyze my semester."
+
+"What should I learn next in AI/ML?"
+
+"Am I ready for an internship?"
+
+Guru AI should use actual stored data.
+
+Do not invent statistics.
+
+If data is missing, say:
+
+"I don't have enough data yet. Add your attendance/marks/goals and I'll analyze it."
+
+==================================================
+20. GURU AI ACTIONS
+==================================================
+
+Guru AI should not only chat.
+
+Where technically safe, provide structured actions.
+
+Examples:
+
+"Add a goal to solve 5 DSA problems this week."
+
+"Create today's study plan."
+
+"Show subjects below 85%."
+
+"Analyze my weekly progress."
+
+"Suggest what I should study tonight."
+
+Before destructive actions, ask for confirmation.
+
+==================================================
+21. AI AGENTS
+==================================================
+
+Make the AI Agents section functional.
+
+Agents:
+
+Attendance Agent
+Study Planner Agent
+Academic Coach
+DSA Coach
+AI/ML Mentor
+Project Mentor
+Career Agent
+Growth Analyst
+
+Each agent must use actual user data.
+
+Do not display fake agent outputs.
+
+If Gemini is not configured:
+
+show:
+
+"Connect Gemini API to activate AI agents."
+
+==================================================
+22. AUTOMATION
+==================================================
+
+Add local automation.
+
+Examples:
+
+Morning:
+
+"Good morning Guru. Here are today's classes."
+
+Before a class:
+
+"You have DSA in 15 minutes."
+
+Attendance warning:
+
+"Your DDCO attendance is below your target."
+
+Goal reminder:
+
+"You have 2 unfinished goals."
+
+Weekly:
+
+"Your weekly engineering growth report is ready."
+
+Use browser notifications where supported.
+
+Do not require paid notification services.
+
+Allow automations to be enabled/disabled.
+
+==================================================
+23. LOCAL STORAGE
+==================================================
+
+Use LocalStorage as the primary storage system.
+
+All user-created data must persist after:
+
+refresh
+browser close
+browser reopen
+
+Create structured storage keys.
+
+Example:
+
+engineerOS_attendance
+engineerOS_subjects
+engineerOS_goals
+engineerOS_projects
+engineerOS_dsa
+engineerOS_skills
+engineerOS_study
+engineerOS_academics
+engineerOS_settings
+
+Use versioned storage.
+
+Provide:
+
+Export Data → JSON
+Import Data → JSON
+Clear All Data
+
+Never store Gemini API keys in LocalStorage.
+
+==================================================
+24. DEMO DATA
+==================================================
+
+If demo data is useful for showcasing the UI, create a separate:
+
+"Demo Mode"
+
+button.
+
+Demo data must NEVER be mixed with real personal data.
+
+Provide:
+
+Load Demo Data
+Clear Demo Data
+Use My Data
+
+The default real-user mode should start clean.
+
+==================================================
+25. LOGO — VERY IMPORTANT
+==================================================
+
+I will upload my official ENGINEER OS logo separately.
+
+USE THE EXACT LOGO I PROVIDE.
+
+Do NOT create another logo.
+
+Do NOT use the currently generated placeholder logo.
+
+Replace the existing incorrect logo everywhere.
+
+Use my uploaded logo for:
+
+Sidebar
+Dashboard branding
+App header where appropriate
+Guru AI branding where appropriate
+Favicon/app icon if suitable
+Empty/welcome state where appropriate
+
+Maintain the original proportions.
+
+Do not distort, stretch or recolor the logo unless explicitly required.
+
+If the uploaded logo has transparent background, preserve transparency.
+
+==================================================
+26. VISUAL DESIGN
+==================================================
+
+Keep the premium AI engineering dashboard style.
+
+But make the interface CLEANER.
+
+The current interface feels slightly crowded.
+
+Improve:
+
+Spacing
+Typography
+Card hierarchy
+Information density
+Alignment
+Readability
+
+Use:
+
+Dark premium UI
+Deep navy/black background
+Blue/cyan/purple accents
+Glassmorphism used carefully
+Professional charts
+Subtle gradients
+Soft borders
+Minimal animations
+
+Do NOT make it look like a gaming dashboard.
+
+It should look like a premium startup product.
+
+==================================================
+27. EMPTY STATES
+==================================================
+
+Every section needs a beautiful empty state.
+
+Example:
+
+Attendance:
+
+"No attendance recorded yet."
+
+[Mark Today's Attendance]
+
+DSA:
+
+"No problems logged yet."
+
+[Add DSA Problem]
+
+Projects:
+
+"No projects added yet."
+
+[Create Project]
+
+Goals:
+
+"No goals for today."
+
+[Create Goal]
+
+This is extremely important.
+
+==================================================
+28. QUICK ACTIONS
+==================================================
+
+Add a universal quick-action button.
+
+Actions:
+
+Mark Attendance
+Add Goal
+Log Study
+Add DSA Problem
+Add Project
+Add Academic Record
+Update Skill
+Ask Guru AI
+
+After adding data, automatically refresh all related dashboard values.
+
+==================================================
+29. ANALYTICS
+==================================================
+
+Charts must use real stored data.
+
+Show:
+
+Attendance trend
+Study hours
+DSA progress
+AI/ML progress
+Project progress
+Academic marks
+Growth Index
+
+If insufficient data exists:
+
+Show a useful empty chart state rather than fake data.
+
+Example:
+
+"Your attendance trend will appear after you record a few classes."
+
+==================================================
+30. ERROR HANDLING
+==================================================
+
+Add proper error states.
+
+Gemini unavailable:
+
+"Guru AI is temporarily unavailable. Check your Gemini API configuration."
+
+Invalid data:
+
+Show validation messages.
+
+LocalStorage unavailable:
+
+Show a clear warning.
+
+Never silently fail.
+
+==================================================
+31. MOBILE RESPONSIVENESS
+==================================================
+
+The application must work beautifully on:
+
+Desktop
+Laptop
+Tablet
+Mobile
+
+On mobile:
+
+Use bottom navigation or collapsible sidebar.
+
+Cards should stack naturally.
+
+Tables should become responsive.
+
+Forms should be mobile-friendly.
+
+==================================================
+32. DATA CONSISTENCY
+==================================================
+
+This is extremely important.
+
+When the user adds data:
+
+Attendance → updates Dashboard + Analytics + Growth Score + Guru AI
+
+Academic marks → updates Dashboard + SGPA + CGPA + Growth Score + Guru AI
+
+DSA problem → updates DSA + Dashboard + Growth Score + Guru AI
+
+Goal → updates Goals + Dashboard + Consistency Score
+
+Study session → updates Study Analytics + Growth Score
+
+Project → updates Projects + Growth Score + Career readiness
+
+Everything should use ONE consistent source of truth.
+
+Do not duplicate independent hardcoded values.
+
+==================================================
+33. NO FAKE FUNCTIONALITY
+==================================================
+
+Do NOT create buttons that only look functional.
+
+If a button says:
+
+"Run AI Agent"
+
+it must actually run the agent.
+
+If a button says:
+
+"Mark Attendance"
+
+it must actually save attendance.
+
+If a button says:
+
+"Add Project"
+
+it must actually create the project.
+
+If a button says:
+
+"Export Data"
+
+it must actually download/export the data.
+
+If something cannot be implemented because credentials are missing:
+
+show a clear configuration message.
+
+==================================================
+34. CURRENT UI CLEANUP
+==================================================
+
+Review the current screenshots and specifically fix:
+
+- hardcoded statistics
+- fake attendance
+- fake CGPA
+- fake DSA count
+- fake AI/ML progress
+- fake project count
+- fake goals
+- unnecessary raw/demo text
+- non-functional buttons
+- non-functional Guru AI
+- incorrect logo
+- crowded cards
+- inconsistent spacing
+- unclear data hierarchy
+
+Keep the overall premium design direction, but make it feel like a REAL APPLICATION.
+
+==================================================
+35. FINAL QUALITY CHECK
+==================================================
+
+Before finishing, test:
+
+Add attendance
+Edit attendance
+Delete attendance
+Attendance calculation
+85% threshold
+Warning status
+Critical status
+Attendance prediction
+Absence simulation
+Timetable
+Batch handling
+Add academic marks
+SGPA
+CGPA
+Add DSA problem
+DSA progress
+Add AI/ML topic
+Add project
+Add goal
+Study timer/log
+Growth Index
+LocalStorage persistence
+Refresh persistence
+Export
+Import
+Clear data
+Guru AI
+Gemini API configuration
+AI agents
+Automations
+Responsive mobile UI
+Logo rendering
+
+MOST IMPORTANT:
+
+The application must now behave like a real personal Engineering Growth OS.
+
+The user enters data → the application calculates everything → the dashboard updates automatically → Guru AI analyzes the actual data.
+
+DO NOT fill the application with fake personal data.
+
+DO NOT use placeholder statistics pretending to be real.
+
+Make the app clean, functional, dynamic, professional and ready to demonstrate as a real product.
