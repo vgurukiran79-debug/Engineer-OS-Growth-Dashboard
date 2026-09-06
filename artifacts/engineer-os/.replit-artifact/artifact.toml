@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Engineer OS — My 2nd Year Growth"
+description = "A local-first engineering growth command center for students to track attendance, academics, skills, DSA, AI/ML learning, projects, goals, and career readiness."
+version = "1.0.0"
+id = "artifacts/engineer-os"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23525
+
+[services.development]
+run = "pnpm --filter @workspace/engineer-os run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/engineer-os", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/engineer-os/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23525"
+BASE_PATH = "/"

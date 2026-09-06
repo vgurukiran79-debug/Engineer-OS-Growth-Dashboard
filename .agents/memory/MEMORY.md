@@ -1,0 +1,1 @@
+- [Local-first seed versioning](local-first-seed-versioning.md) — bump storage boundaries when the model or demo seed changes.

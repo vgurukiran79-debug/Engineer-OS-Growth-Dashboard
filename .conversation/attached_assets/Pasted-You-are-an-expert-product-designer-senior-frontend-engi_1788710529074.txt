@@ -1,0 +1,1494 @@
+You are an expert product designer, senior frontend engineer, AI engineer, UX designer, and student productivity-system architect.
+
+Build a complete production-quality web application called:
+
+"ENGINEER OS — My 2nd Year Growth"
+
+Tagline:
+"Track. Learn. Build. Grow."
+
+The application is designed for engineering students following the VTU 2025 B.E./B.Tech scheme, but it must be reusable and configurable for students from other colleges/universities.
+
+This is NOT just an attendance tracker.
+
+It is a complete personal engineering growth operating system combining:
+
+1. VTU attendance tracker
+2. Academic tracker
+3. Timetable
+4. Attendance prediction
+5. Absence simulator
+6. Study planner
+7. Skills tracker
+8. DSA tracker
+9. AI/ML learning tracker
+10. Project tracker
+11. Git/GitHub growth tracker
+12. Internship preparation
+13. Certificates tracker
+14. Daily/weekly/monthly goals
+15. Semester comparison
+16. Engineering Growth Score
+17. AI chatbot
+18. AI agents
+19. Automation
+20. Personal analytics dashboard
+
+The application should feel like a premium AI-powered engineering command center.
+
+==================================================
+CORE USER CONTEXT
+==================================================
+
+The initial demo configuration should be based on:
+
+Year:
+2nd Year
+
+Semester:
+3rd Semester
+
+Branch:
+Artificial Intelligence & Machine Learning
+
+Scheme:
+VTU 2025
+
+College:
+KNS Institute of Technology
+
+Semester timetable:
+Use the timetable configuration provided in the project requirements.
+
+College timing:
+8:40 AM – 3:45 PM
+
+Breaks:
+Tea break: 10:40 AM – 11:00 AM
+Lunch: 1:00 PM – 1:45 PM
+
+3rd Semester subjects:
+
+1. 1BCS301 — Probability, Distributions and Statistics
+2. 1BCS302 — Object Oriented Programming with Java
+3. 1BCS303 — Digital Design and Computer Organization
+4. 1BCS304 — Operating Systems
+5. 1BCS305 — Data Structures and Applications
+6. 1BCSL306 — Data Structures Laboratory
+7. 1BAIL307A — Project Management with Git
+8. 1BCP308 — Project-Based Learning
+9. 1BNSS309 — National Service Scheme
+10. 1BPE309 — Physical Education (Sports and Athletics)
+
+The subject list, timetable, credits, attendance rules and semester settings must be editable.
+
+==================================================
+IMPORTANT VTU ATTENDANCE LOGIC
+==================================================
+
+Implement VTU 2025 attendance logic.
+
+Default minimum attendance requirement:
+
+85%
+
+Each course must be calculated separately.
+
+Formula:
+
+attendance_percentage =
+(present_classes / total_conducted_classes) * 100
+
+Example:
+
+Present = 42
+Total = 48
+
+Attendance =
+87.50%
+
+Do NOT simply average the percentages of subjects.
+
+Calculate attendance from actual class counts.
+
+The system must distinguish:
+
+- Present
+- Absent
+- Not yet conducted
+- Cancelled
+- Holiday
+- Optional/other activity if needed
+
+Cancelled/holiday classes must NOT increase the total conducted classes.
+
+The default status system:
+
+GREEN:
+Attendance >= 85%
+
+YELLOW / WARNING:
+Attendance >= 80% and < 85%
+
+RED:
+Attendance < 80%
+
+Also show:
+
+"VTU minimum: 85%"
+
+"Possible condonation zone: below 85%, subject to applicable VTU rules and approval"
+
+Never tell the student that condonation is automatic.
+
+Display a disclaimer:
+
+"Attendance rules are based on the configured VTU 2025 regulation. Institutional implementation may vary. Verify official notices from VTU/your college."
+
+Make the attendance threshold configurable from Settings.
+
+==================================================
+ATTENDANCE DASHBOARD
+==================================================
+
+Create a beautiful attendance dashboard.
+
+Top summary cards:
+
+Overall Attendance
+Safe Subjects
+Warning Subjects
+Critical Subjects
+Classes Attended
+Classes Missed
+
+Subject cards:
+
+Subject name
+Code
+Present / Total
+Percentage
+Progress bar
+Status
+Classes needed to reach 85%
+Maximum classes that can be missed while staying >= 85%, where mathematically applicable
+
+Example:
+
+Data Structures
+42 / 48
+87.5%
+SAFE
+
+"Can miss: X upcoming classes"
+
+If below target:
+
+"Attend next X consecutive classes to reach 85%"
+
+Make the calculation mathematically accurate.
+
+==================================================
+CLASS-BY-CLASS ATTENDANCE
+==================================================
+
+Use the timetable to generate scheduled classes.
+
+Every scheduled class should have an attendance action:
+
+PRESENT
+ABSENT
+CANCELLED
+HOLIDAY
+
+Allow quick actions.
+
+Example:
+
+Tuesday
+9:40 – 10:40
+OOPS
+[Present] [Absent]
+
+Attendance should update immediately.
+
+Provide:
+
+Undo last attendance action.
+
+Edit previous attendance records.
+
+Bulk attendance entry.
+
+Calendar view.
+
+Daily view.
+
+Weekly view.
+
+Monthly view.
+
+Subject filter.
+
+==================================================
+TIMETABLE
+==================================================
+
+Create an interactive weekly timetable.
+
+Days:
+
+Monday
+Tuesday
+Wednesday
+Thursday
+Friday
+Saturday
+
+Time slots:
+
+8:40–9:40
+9:40–10:40
+10:40–11:00 Tea Break
+11:00–12:00
+12:00–1:00
+1:00–1:45 Lunch
+1:45–2:45
+2:45–3:45
+
+Allow editing timetable entries.
+
+Each timetable class should connect directly to attendance.
+
+Clicking a class opens:
+
+Subject
+Teacher
+Time
+Attendance
+Recent attendance history
+Quick Present/Absent buttons
+
+==================================================
+ATTENDANCE PREDICTOR
+==================================================
+
+Create an Attendance Prediction tool.
+
+Inputs:
+
+Current present
+Current total
+Future classes
+Expected attended classes
+Expected missed classes
+
+Show:
+
+Current attendance
+Projected attendance
+Difference
+Whether the student remains above 85%
+
+Example:
+
+Current:
+78%
+
+If you attend next 8 classes:
+Projected:
+84.6%
+
+If you attend next 12 classes:
+Projected:
+85.7%
+
+Use exact mathematical calculations.
+
+==================================================
+ABSENCE SIMULATOR
+==================================================
+
+Create a separate simulator.
+
+The simulator MUST NOT modify real attendance data.
+
+Question:
+
+"What happens if I miss classes?"
+
+Allow:
+
+Select subject
+Select number of upcoming classes to miss
+
+Show:
+
+Current percentage
+Projected percentage
+New percentage
+Status
+Whether below VTU threshold
+Recovery required
+
+Example:
+
+"If you miss 2 more DSA classes, your attendance will fall from 87.5% to 84.6%."
+
+Add a reset button.
+
+==================================================
+ACADEMIC PERFORMANCE
+==================================================
+
+Create academic tracking for:
+
+CIE/internal marks
+SEE marks
+Assignments
+Quizzes
+Lab performance
+Projects
+Practical exams
+
+Allow students to enter marks manually.
+
+Show:
+
+Subject performance
+Average
+Best subject
+Weakest subject
+Progress over time
+
+Create charts.
+
+==================================================
+SGPA / CGPA TRACKER
+==================================================
+
+Create an SGPA calculator.
+
+Allow:
+
+Subject
+Credits
+Grade
+Grade points
+
+Calculate:
+
+SGPA
+
+Also maintain:
+
+Semester 1
+Semester 2
+Semester 3
+Semester 4
+Semester 5
+Semester 6
+Semester 7
+Semester 8
+
+Calculate CGPA based on entered semester data.
+
+Show:
+
+Current CGPA
+Target CGPA
+Required future SGPA
+
+Example:
+
+Current CGPA: 7.68
+Target CGPA: 9.00
+
+Show a realistic projection.
+
+==================================================
+ENGINEERING GROWTH SCORE
+==================================================
+
+Create a central "Engineering Growth Score".
+
+Score range:
+
+0–100
+
+Calculate using configurable categories:
+
+Academics — 20%
+Attendance — 10%
+DSA — 15%
+Programming — 10%
+AI/ML — 15%
+Projects — 15%
+Git/GitHub — 5%
+Communication — 5%
+Consistency — 5%
+
+Allow weights to be changed.
+
+Show:
+
+Overall Growth Score
+
+Sub-scores.
+
+Use a radar chart / progress visualization.
+
+Do NOT make the score pretend to be scientifically objective.
+
+Label it:
+
+"Personal Growth Index"
+
+Explain that it is a productivity metric based on user-entered data.
+
+==================================================
+SKILLS TRACKER
+==================================================
+
+Create skill categories.
+
+Programming:
+
+Python
+Java
+C
+SQL
+
+Data:
+
+NumPy
+Pandas
+Matplotlib
+
+AI/ML:
+
+Machine Learning
+Deep Learning
+Generative AI
+LLMs
+RAG
+AI Agents
+Prompt Engineering
+
+Developer:
+
+Git
+GitHub
+APIs
+REST
+Docker
+Linux
+
+For each skill:
+
+Not Started
+Learning
+Practicing
+Intermediate
+Advanced
+
+Allow progress percentage.
+
+Show skill growth over time.
+
+==================================================
+DSA TRACKER
+==================================================
+
+Create DSA dashboard.
+
+Categories:
+
+Arrays
+Strings
+Linked Lists
+Stacks
+Queues
+Hashing
+Recursion
+Trees
+Binary Search
+Graphs
+Sorting
+Searching
+Dynamic Programming
+Greedy
+Backtracking
+
+Track:
+
+Problems attempted
+Problems solved
+Easy
+Medium
+Hard
+Daily streak
+Weekly target
+
+Allow adding problems.
+
+Show progress charts.
+
+==================================================
+AI/ML LEARNING TRACKER
+==================================================
+
+Create AI/ML roadmap.
+
+Sections:
+
+Python
+Statistics
+Probability
+Linear Algebra
+NumPy
+Pandas
+Data Visualization
+Machine Learning
+Supervised Learning
+Unsupervised Learning
+Model Evaluation
+Feature Engineering
+Deep Learning
+Neural Networks
+Computer Vision
+NLP
+Generative AI
+LLMs
+RAG
+AI Agents
+MLOps
+
+Each topic has:
+
+Not Started
+Learning
+Practicing
+Completed
+
+Allow notes and resources.
+
+==================================================
+PROJECT TRACKER
+==================================================
+
+Track projects.
+
+Fields:
+
+Project name
+Description
+Technology
+Status
+Start date
+Deadline
+Progress
+GitHub URL
+Demo URL
+Problems solved
+Skills learned
+
+Statuses:
+
+Idea
+Planning
+Building
+Testing
+Completed
+Deployed
+
+Include the user's:
+
+AI Engineering Copilot
+
+as an example project.
+
+==================================================
+GITHUB GROWTH
+==================================================
+
+Create GitHub progress section.
+
+Because this version should work at ₹0 and without login, do NOT require GitHub OAuth.
+
+Allow manual GitHub metrics:
+
+Repositories
+Commits
+Pull requests
+Issues
+Contributions
+Projects
+
+Allow GitHub username input.
+
+If public GitHub APIs can be safely used without requiring secrets, optionally fetch public data.
+
+Never expose API secrets in frontend code.
+
+==================================================
+INTERNSHIP PREPARATION
+==================================================
+
+Create career dashboard.
+
+Track:
+
+Resume
+Portfolio
+GitHub
+LinkedIn
+DSA
+Projects
+AI/ML
+Mock interviews
+Applications
+Internships
+Certificates
+
+Application tracker:
+
+Company
+Role
+Date applied
+Status
+Link
+Notes
+
+Statuses:
+
+Interested
+Applied
+Assessment
+Interview
+Rejected
+Selected
+
+==================================================
+CERTIFICATE TRACKER
+==================================================
+
+Fields:
+
+Certificate name
+Provider
+Date
+Credential URL
+Skill
+Description
+
+Display certificate gallery.
+
+==================================================
+GOALS SYSTEM
+==================================================
+
+Create:
+
+Daily goals
+Weekly goals
+Monthly goals
+Semester goals
+
+Examples:
+
+Study 2 hours
+Solve 3 DSA problems
+Complete Java chapter
+Complete ML topic
+Work on project
+Read documentation
+
+Allow:
+
+Complete
+Skip
+Edit
+Delete
+
+Show completion percentage.
+
+==================================================
+HABIT TRACKER
+==================================================
+
+Track:
+
+Study
+DSA
+Coding
+AI/ML
+Project
+Reading
+Exercise
+Communication
+
+Create streak system.
+
+==================================================
+STUDY TIMER
+==================================================
+
+Add Pomodoro timer.
+
+Modes:
+
+25/5
+50/10
+Custom
+
+Track study sessions.
+
+Automatically add completed sessions to analytics.
+
+==================================================
+AI CHATBOT
+==================================================
+
+Create an AI assistant named:
+
+"Guru AI"
+
+or
+
+"Engineer AI"
+
+Use Gemini API.
+
+The AI assistant should understand the user's dashboard context.
+
+Examples:
+
+"How is my attendance?"
+
+"Which subject is dangerous?"
+
+"What should I study today?"
+
+"How many DSA problems did I solve this week?"
+
+"What should I do to reach 9 CGPA?"
+
+"If I miss tomorrow's Maths class, what happens?"
+
+"Give me today's study plan."
+
+"Analyze my semester growth."
+
+The chatbot should provide actionable answers.
+
+IMPORTANT:
+
+Use Gemini API through a secure server-side/API route.
+
+Do NOT expose the Gemini API key in client-side JavaScript.
+
+Use an environment variable such as:
+
+GEMINI_API_KEY
+
+Provide a clear setup area/documentation for adding the Gemini API key.
+
+The application must still work without Gemini configured.
+
+If Gemini is unavailable:
+
+show a graceful fallback message.
+
+==================================================
+AI AGENTS
+==================================================
+
+Create an "AI Agents" section.
+
+Build the architecture so agents are modular.
+
+Initial agents:
+
+1. Attendance Agent
+
+Responsibilities:
+Analyze attendance
+Detect shortage
+Predict future attendance
+Suggest recovery actions
+
+2. Study Planner Agent
+
+Responsibilities:
+Analyze timetable
+Goals
+Weak subjects
+Upcoming exams
+Available study time
+
+Generate a daily study plan.
+
+3. Academic Coach Agent
+
+Analyze:
+
+marks
+attendance
+subjects
+study consistency
+
+Provide recommendations.
+
+4. DSA Coach Agent
+
+Analyze DSA progress.
+
+Recommend topics/problems.
+
+5. AI/ML Mentor Agent
+
+Analyze AI/ML roadmap.
+
+Recommend next learning step.
+
+6. Project Mentor Agent
+
+Analyze projects.
+
+Recommend next development task.
+
+7. Career Agent
+
+Analyze:
+
+skills
+projects
+GitHub
+resume
+DSA
+
+Give internship-readiness recommendations.
+
+8. Growth Analyst Agent
+
+Analyze the entire dashboard.
+
+Generate:
+
+Weekly growth report
+Weak areas
+Strong areas
+Next actions
+
+Agents should not pretend to perform actions they cannot perform.
+
+==================================================
+AUTOMATION ENGINE
+==================================================
+
+Create a lightweight local automation system.
+
+Examples:
+
+Every morning:
+
+"Good morning! You have 5 classes today."
+
+Before class:
+
+"DSA starts in 15 minutes."
+
+After class:
+
+"Did you attend DSA?"
+
+If attendance falls below 85%:
+
+"Warning: Your DSA attendance is below the VTU minimum."
+
+Weekly:
+
+"Your weekly engineering growth report is ready."
+
+If a goal is overdue:
+
+"You have 2 unfinished goals."
+
+If DSA streak breaks:
+
+"Your DSA streak ended. Start again today."
+
+Automations should be configurable.
+
+Because this is a local-first app:
+
+Use browser notifications where permission is available.
+
+Do not require paid notification infrastructure.
+
+==================================================
+DASHBOARD
+==================================================
+
+Create a premium home dashboard.
+
+Header:
+
+"Good evening, Guru 👋"
+
+Subtitle:
+
+"Let's build a stronger engineer today."
+
+Main cards:
+
+Overall Growth
+Attendance
+CGPA
+DSA
+AI/ML
+Projects
+
+Today's overview:
+
+Classes today
+Attendance actions
+Study goals
+Upcoming tasks
+
+AI insight:
+
+"Guru AI recommends..."
+
+Quick actions:
+
++ Mark Attendance
++ Add Goal
++ Log Study
++ Add DSA Problem
++ Update Skill
++ Add Project
+
+==================================================
+SEMESTER COMPARISON
+==================================================
+
+Create comparison:
+
+Semester 1
+Semester 2
+Semester 3
+
+Compare:
+
+SGPA
+Attendance
+Skills
+DSA
+Projects
+Study consistency
+Growth Score
+
+Use charts.
+
+Highlight:
+
+Improved
+Declined
+Stable
+
+==================================================
+SECOND YEAR OVERVIEW
+==================================================
+
+Create a dedicated page:
+
+"MY 2ND YEAR"
+
+Show:
+
+3rd Semester
+4th Semester
+
+Timeline:
+
+Start → Learn → Build → Improve → Internship Ready
+
+Track yearly milestones.
+
+==================================================
+ANALYTICS
+==================================================
+
+Create visual analytics.
+
+Charts:
+
+Attendance trend
+Study hours
+DSA problems
+Skill growth
+Project progress
+Academic marks
+Growth Score
+
+Time filters:
+
+7 days
+30 days
+Semester
+Year
+
+==================================================
+NOTIFICATIONS
+==================================================
+
+Create notification center.
+
+Notification types:
+
+Attendance
+Goals
+Study
+Projects
+AI recommendations
+Deadlines
+
+Allow mute settings.
+
+==================================================
+SETTINGS
+==================================================
+
+Settings should include:
+
+Student name
+Branch
+College
+Semester
+University
+Scheme
+Attendance threshold
+Warning threshold
+Study goals
+Gemini API configuration instructions
+Theme
+Notifications
+Data export
+Data import
+Reset data
+
+==================================================
+DATA STORAGE
+==================================================
+
+Use LocalStorage.
+
+No login.
+
+No database required.
+
+No paid backend.
+
+No mandatory external services.
+
+All core functionality must work offline after the application loads.
+
+Create a structured data model.
+
+Use versioned local storage so future updates do not destroy user data.
+
+Provide:
+
+Export Data → JSON
+
+Import Data → JSON
+
+Reset Data
+
+Confirmation before reset.
+
+==================================================
+PRIVACY
+==================================================
+
+Display:
+
+"Your personal academic data is stored locally on this device."
+
+Do not collect unnecessary personal data.
+
+Do not hard-code API keys.
+
+Do not store Gemini API keys in localStorage.
+
+==================================================
+DESIGN SYSTEM
+==================================================
+
+Design style:
+
+Premium AI engineering dashboard.
+
+Combination of:
+
+AI interface
+Engineering dashboard
+Academic productivity app
+Modern startup SaaS
+
+Visual characteristics:
+
+Dark-first interface
+Premium glassmorphism
+Subtle gradients
+Clean cards
+Soft borders
+Beautiful typography
+Minimal animations
+Technical visual language
+Modern charts
+Responsive layouts
+
+Do NOT overuse glowing effects.
+
+Do NOT make it look like a gaming website.
+
+Make it professional enough to show recruiters.
+
+Suggested palette:
+
+Deep dark background
+Electric blue
+Indigo
+Cyan
+Purple accents
+Green for success
+Amber for warning
+Red for critical
+
+Use accessible contrast.
+
+==================================================
+RESPONSIVE DESIGN
+==================================================
+
+Must work perfectly on:
+
+Desktop
+Laptop
+Tablet
+Mobile
+
+Desktop:
+
+Sidebar navigation.
+
+Mobile:
+
+Bottom navigation or collapsible sidebar.
+
+==================================================
+NAVIGATION
+==================================================
+
+Create:
+
+Dashboard
+My Attendance
+Timetable
+Academics
+Growth
+DSA
+AI/ML
+Projects
+Goals
+Career
+GitHub
+Analytics
+AI Agents
+Guru AI
+Settings
+
+==================================================
+MICRO-INTERACTIONS
+==================================================
+
+Use subtle:
+
+Hover animations
+Progress animations
+Card transitions
+Success feedback
+Toast notifications
+Skeleton loaders
+Empty states
+
+Do NOT add unnecessary animations.
+
+==================================================
+EMPTY STATES
+==================================================
+
+Every section must have useful empty states.
+
+Example:
+
+"No attendance recorded yet."
+
+Button:
+
+"Mark today's attendance"
+
+==================================================
+ACCESSIBILITY
+==================================================
+
+Use:
+
+Semantic HTML
+Keyboard navigation
+ARIA labels
+Readable font sizes
+High contrast
+Accessible buttons
+Focus states
+
+==================================================
+TECHNICAL ARCHITECTURE
+==================================================
+
+Prefer:
+
+React
+TypeScript
+Tailwind CSS
+shadcn/ui or equivalent component system
+Recharts or equivalent chart library
+
+Use modular components.
+
+Recommended architecture:
+
+/components
+/pages
+/features
+/hooks
+/lib
+/services
+/agents
+/utils
+/types
+
+Separate:
+
+UI
+Business logic
+Attendance calculations
+AI services
+LocalStorage
+Analytics
+Agent logic
+
+Do not put the entire application into one giant component.
+
+==================================================
+ATTENDANCE ENGINE
+==================================================
+
+Create reusable functions such as:
+
+calculateAttendance()
+calculateClassesNeeded()
+calculateMaximumAbsences()
+predictAttendance()
+simulateAbsence()
+getAttendanceStatus()
+
+These functions must be independently testable.
+
+Example:
+
+calculateAttendance(present, total)
+
+calculateClassesNeeded(
+currentPresent,
+currentTotal,
+targetPercentage
+)
+
+Use mathematically correct formulas.
+
+==================================================
+AI ARCHITECTURE
+==================================================
+
+Create an AI service layer.
+
+Example conceptual structure:
+
+AIService
+GeminiService
+AgentManager
+AttendanceAgent
+StudyAgent
+AcademicAgent
+DSAAgent
+MLAgent
+ProjectAgent
+CareerAgent
+GrowthAgent
+
+The agents should receive structured dashboard context.
+
+Example context:
+
+{
+attendance,
+subjects,
+goals,
+studyHours,
+dsaProgress,
+skills,
+projects,
+academicMarks
+}
+
+Agents return structured recommendations.
+
+Do not send unnecessary private data to AI.
+
+==================================================
+GEMINI INTEGRATION
+==================================================
+
+Use Gemini as the primary AI model.
+
+Create a clean service abstraction so the model can be changed later.
+
+Never expose:
+
+GEMINI_API_KEY
+
+in frontend code.
+
+Use a secure server-side route/proxy.
+
+Create clear setup instructions.
+
+If API configuration is missing:
+
+The website must still function.
+
+AI buttons should display:
+
+"Connect Gemini to activate AI features."
+
+==================================================
+DEMO DATA
+==================================================
+
+Include realistic sample/demo data so the application does not look empty on first launch.
+
+But clearly label it:
+
+"Demo Data"
+
+Provide:
+
+"Clear Demo Data"
+
+button.
+
+==================================================
+IMPORTANT UX RULE
+==================================================
+
+The application must NEVER overwhelm the user.
+
+The dashboard should answer three questions immediately:
+
+1. How am I doing?
+2. What needs attention?
+3. What should I do today?
+
+==================================================
+FINAL PRODUCT FEEL
+==================================================
+
+The final product should feel like:
+
+"Notion + GitHub + Google Calendar + AI Tutor + Attendance Tracker + Student Analytics"
+
+but designed specifically for engineering students.
+
+It should feel like a real startup-quality product, not a college mini-project.
+
+Brand:
+
+ENGINEER OS
+
+Tagline:
+
+"Track. Learn. Build. Grow."
+
+Primary value proposition:
+
+"Your AI-powered command center for becoming a better engineer."
+
+==================================================
+FINAL REQUIREMENT
+==================================================
+
+Do NOT create only static UI mockups.
+
+Implement functional:
+
+Attendance calculations
+Timetable
+Class attendance actions
+Attendance prediction
+Absence simulation
+Academic tracking
+SGPA/CGPA calculations
+Growth score
+Goals
+Habits
+DSA tracking
+AI/ML tracking
+Projects
+Career tracking
+Analytics
+LocalStorage
+Import/export
+AI chatbot architecture
+Gemini integration architecture
+AI agent architecture
+Automation system
+
+Use realistic demo data.
+
+Make all major buttons functional.
+
+If an advanced feature cannot be fully implemented without external credentials, implement the UI + service architecture + graceful fallback instead of creating fake functionality.
+
+Before finishing:
+
+Test all calculations.
+Test LocalStorage persistence.
+Test import/export.
+Test responsive layouts.
+Test attendance edge cases.
+Test zero classes.
+Test 100% attendance.
+Test attendance below 85%.
+Test attendance exactly 85%.
+Test prediction calculations.
+Test absence simulation.
+Test SGPA calculations.
+Test Growth Score.
+Test navigation.
+Test dark/light theme if implemented.
+
+Build the application as a polished, maintainable, production-quality MVP.
